@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="jquery-2.2.4.js"></script>
+  <title>Exercice 1 JQ partie 4</title>
+</head>
+<body>
+  <form method="post" action="choix du joueur">
+   <p>
+       <label for="main">Fait ton choix ?</label><br />
+       <select name="main" id="hand">
+           <option value="pierre">Pierre</option>
+           <option value="feuille">Feuille</option>
+           <option value="ciseau">Ciseau</option>
+       </select>
+       <button type="button" name="button" id="click">Shifumi !</button>
+   </p>
+  </form>
+  <script>
+$(function () {
+$('#click').click(function (){
+  var choice = $('#hand').val(); // Déclaration de a variable choice qui récupère la valeur de la liste déroulante
+  var computerPossibility = ['feuille','pierre','ciseau']; // Création d'un tableau des 3 possibilté
+  var computerChoice = computerPossibility[Math.floor(Math.random()*3)]; // Déclaration de la variable qui reprend une valeur aléatoire du tableau dont la posistion est 0, 1 ou 2
+  if (choice == computerChoice) {
+    alert('Egalité');
+    // Enumération de toutes les possibilités pour le joueur de gagner
+  } else if ((choice == 'feuille' && computerChoice == 'pierre') || (choice == 'pierre' && computerChoice == 'ciseau') || (choice == 'ciseau' && computerChoice == 'feuille')){
+    alert('Gagné');
+  }else {
+    alert('Perdu !');
+  }
+});
+});
+  </script>
+</body>
+</html>
