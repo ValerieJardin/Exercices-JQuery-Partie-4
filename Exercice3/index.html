@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="jquery-2.2.4.js"></script>
+  <title>Exercice 3 JQ partie 4</title>
+</head>
+<body>
+  <form method="post">
+   <p>Demande d'identité : <br/>
+       <label for="identity">Nom : </label><input type="text" name="surname" id="surname"/><br/>
+       <label for="identity">Prénom : </label><input type="text" name="name" id="name"/><br/>
+       <label for="identity">Adresse mail : </label><input type="text" name="mail" id="mail"/><br/>
+       <label for="identity">Numéro de téléphone : </label><input type="text" name="phone" id="phone"><br/>
+       <button type="button" name="button" id="verification">Vérif</button>
+   </p>
+  </form>
+  <script>
+$(function() {
+  $('#verification').click(function(){
+    var surname = $('#surname').val(); // Déclaration de la variable qui récup la valeur de l'input Nom
+    var verificationSurname = surname.match(/^[A-Za-é-è-ê-ë-z-]+$/); // Variable déclarant la fonction de vérif du regex càd qui vérif que l'utilisateur à entré les bons caractères
+    var name = $('#name').val(); // Récup de la valeur dans prénom
+    var verificationName = name.match(/^[A-Za-é-è-ê-ë-z-]+$/); // Variable déclarant la fonction de vérif du regexp càd qui vérif que l'utilisateur à entré les bons caractères
+    var mail = $('#mail').val(); // Récupération de la valeur dans l'input mail;
+    var verificationMail = mail.match(/^[\w\-\+]+(\.[\w\-]+)*@[\w\-]+(\.[\w\-]+)*\.[\w\-]{2,4}$/); // Variable déclarant la regex
+    var phone = $('#phone').val(); // Récup de la valeur dans l'input phone
+    var verificationPhone = phone.match(/(0|(\\+33)|(0033))[1-9][0-9]{8}$/);
+//Les conditions du bon remplissage du formulaire nom et prénom
+    if (!verificationSurname || !verificationName) { //
+      alert("Attention ! Vous ne pouvez entrer que des lettres ou des traits d'union dans les champs Nom et Prénom.");
+    } else {
+    }
+// Condition du bon remplissage du formulaire adresse mail
+    if (!verificationMail) {
+      alert("Vérifier votre adresse mail !")
+    } else {
+    }
+// Bon remplissage du formulaire numéro de téléphone
+    if (!verificationPhone) {
+      alert("Il faut taper uniquement 10 chiffres compris entre 0 et 9 !");
+    } else {
+    }
+    });
+  });
+  </script>
+</body>
+</html>
